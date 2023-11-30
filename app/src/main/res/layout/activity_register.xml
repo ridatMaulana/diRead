@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".data.ui.view.register.RegisterActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".data.ui.view.LoginActivity">
+        tools:context=".data.ui.view.login.LoginActivity">
 
         <ImageView
             android:id="@+id/imageView"
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginStart="65dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:text="@string/tv_register"
             android:textColor="@color/blue_2"
@@ -37,6 +37,41 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageView" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:alpha="0"
+            android:text="@string/tv_name"
+            android:textColor="@color/blue_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_register"
+            tools:alpha="100" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edtl_name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:alpha="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            app:startIconDrawable="@drawable/ic_person"
+            tools:alpha="100">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/emailTextView"
@@ -49,7 +84,7 @@
             android:textColor="@color/blue_1"
             app:layout_constraintStart_toStartOf="parent"
             tools:alpha="100"
-            app:layout_constraintTop_toBottomOf="@id/tv_title_register"/>
+            app:layout_constraintTop_toBottomOf="@id/edtl_name"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etl_email"
@@ -66,7 +101,7 @@
             tools:alpha="100">
 
             <com.mobiledev.diread.data.ui.view.customView.EditTextEmail
-                android:id="@+id/et_email"
+                android:id="@+id/edt_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -127,28 +162,28 @@
                 android:text="@string/remember_me" />
         </RelativeLayout>
 
-        <Button
-            android:layout_width="359dp"
-            android:layout_height="54dp"
-            android:backgroundTint="@color/blue_2"
-            android:text="@string/sign_up"
-            tools:layout_editor_absoluteX="32dp"
-            tools:layout_editor_absoluteY="597dp" />
-
         <TextView
             android:id="@+id/tv_signup"
             android:layout_width="wrap_content"
             android:layout_height="16dp"
             android:layout_marginStart="75dp"
-            android:layout_marginTop="440dp"
+            android:layout_marginTop="460dp"
             android:layout_marginEnd="32dp"
             android:text="@string/have_account"
             android:textColor="@color/blue_2"
             android:textSize="10sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.347"
+            app:layout_constraintHorizontal_bias="0.375"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageView" />
+
+        <Button
+            android:layout_width="359dp"
+            android:layout_height="54dp"
+            android:backgroundTint="@color/blue_2"
+            android:text="@string/sign_up"
+            tools:layout_editor_absoluteX="36dp"
+            tools:layout_editor_absoluteY="637dp" />
 
         <TextView
             android:id="@+id/clickableText"
@@ -160,8 +195,8 @@
             android:textColor="@color/blue_2"
             android:textSize="10sp"
             android:textStyle="bold"
-            tools:layout_editor_absoluteX="259dp"
-            tools:layout_editor_absoluteY="676dp" />
+            tools:layout_editor_absoluteX="264dp"
+            tools:layout_editor_absoluteY="699dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

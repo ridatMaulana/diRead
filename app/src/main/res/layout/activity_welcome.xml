@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".data.ui.view.WelcomeActivity">
+    tools:context=".data.ui.view.welcome.WelcomeActivity">
 
     <ImageView
         android:id="@+id/imageView"

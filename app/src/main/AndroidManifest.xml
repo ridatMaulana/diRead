@@ -16,16 +16,16 @@
         android:theme="@style/Theme.DiRead"
         tools:targetApi="31">
         <activity
-            android:name=".RegisterActivity"
+            android:name=".data.ui.view.register.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".data.ui.view.LoginActivity"
+            android:name=".data.ui.view.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".data.ui.view.MainActivity"
+            android:name=".data.ui.view.main.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".data.ui.view.WelcomeActivity"
+            android:name=".data.ui.view.welcome.WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
