@@ -1,9 +1,15 @@
 package com.mobiledev.diread.data.ui.view
 
 import android.net.http.HttpException
+import androidx.lifecycle.liveData
+import com.google.gson.Gson
+import com.mobiledev.diread.data.ResultState
 import com.mobiledev.diread.data.pref.UserModel
+import com.mobiledev.diread.data.pref.UserPreference
+import com.mobiledev.diread.remote.response.ErrorResponse
+import com.mobiledev.diread.remote.response.RegisterResponse
+import com.mobiledev.diread.remote.retrofit.ApiService
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.internal.NopCollector.emit
 
 class UserRepository constructor(
     private val userPreference: UserPreference,

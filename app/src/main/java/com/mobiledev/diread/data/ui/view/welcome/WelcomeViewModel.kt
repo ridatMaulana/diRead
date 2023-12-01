@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.mobiledev.diread.data.pref.UserModel
 import com.mobiledev.diread.data.ui.view.UserRepository
+import androidx.lifecycle.asLiveData
 
 class WelcomeViewModel(private val repository: UserRepository) : ViewModel() {
     fun getSession(): LiveData<UserModel> {
