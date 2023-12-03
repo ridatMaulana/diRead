@@ -107,6 +107,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <RelativeLayout
+        android:id="@+id/check2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
@@ -139,20 +140,24 @@
         android:backgroundTint="@color/blue_2"
         android:text="@string/sign_in"
         tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="597dp" />
+        tools:layout_editor_absoluteY="597dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/check2"/>
 
     <TextView
         android:id="@+id/tv_signup"
         android:layout_width="wrap_content"
         android:layout_height="16dp"
         android:layout_marginStart="75dp"
-        android:layout_marginTop="440dp"
+        android:layout_marginTop="424dp"
         android:layout_marginEnd="32dp"
         android:text="@string/dont_have_account"
         android:textColor="@color/blue_2"
-        android:textSize="10sp"
+        android:textSize="11sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.347"
+        app:layout_constraintHorizontal_bias="0.349"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageView" />
 
@@ -167,7 +172,9 @@
         android:textSize="10sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="259dp"
-        tools:layout_editor_absoluteY="676dp" />
+        tools:layout_editor_absoluteY="676dp"
+        app:layout_constraintStart_toEndOf="@id/tv_signup"
+        app:layout_constraintTop_toTopOf="@id/tv_signup"/>
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progressIndicator"
