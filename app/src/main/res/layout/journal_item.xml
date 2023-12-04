@@ -46,6 +46,15 @@
             tools:layout_editor_absoluteY="16dp"
             tools:src="@tools:sample/backgrounds/scenic" />
 
+        <ImageView
+            android:id="@+id/imageViewFavorite"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/baseline_bookmark_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
