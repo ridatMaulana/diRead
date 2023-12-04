@@ -197,7 +197,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
-            android:onClick="onTextViewClick"
             android:text="@string/sign_in"
             android:textColor="@color/blue_2"
             android:textSize="11sp"

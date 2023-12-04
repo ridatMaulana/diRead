@@ -22,4 +22,6 @@
     <string name="cd_iv_photo">Photo User</string>
     <string name="username">Username</string>
     <string name="email">Email</string>
+    <string name="journal_title">Journal Title</string>
+    <string name="journal_abstract">Journal Abstract</string>
 </resources>
