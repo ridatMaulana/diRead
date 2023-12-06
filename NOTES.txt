@@ -1,0 +1,5 @@
+1. P-ISSN = Print ISSN(ISSN yang digunakan jika jurnal dicetak) karena ini hasil searching jadi wajar ada beberapa artikel yang tidak ada P-ISSN
+2. Ini dibuat per artikel bukan perjurnal karena pdf yang disediakan adanya perartikel bukan perjurnal jadi wajar apabila ada yang memiliki beberapa persamaan contohnya E-ISSN
+3. E-ISSN jangan dibuat ID karena tidak unik
+
+Jika masih ada yang ingin ditanyakan silahkan chat aja
