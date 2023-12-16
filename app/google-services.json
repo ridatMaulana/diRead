@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "620024217410",
+    "project_id": "diread-829a8",
+    "storage_bucket": "diread-829a8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:620024217410:android:653ed31e0ca0ce68d992db",
+        "android_client_info": {
+          "package_name": "com.mobiledev.diread"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANe42nzP3AHeeLVrky122QupgdqPuQlLI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

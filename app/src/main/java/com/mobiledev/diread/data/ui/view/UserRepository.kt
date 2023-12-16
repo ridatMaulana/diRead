@@ -1,21 +1,55 @@
 package com.mobiledev.diread.data.ui.view
 
-import android.net.http.HttpException
-import androidx.lifecycle.liveData
-import com.google.gson.Gson
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthException
 import com.mobiledev.diread.data.ResultState
 import com.mobiledev.diread.data.pref.UserModel
 import com.mobiledev.diread.data.pref.UserPreference
-import com.mobiledev.diread.remote.response.ErrorResponse
-import com.mobiledev.diread.remote.response.RegisterResponse
-import com.mobiledev.diread.remote.retrofit.ApiService
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.tasks.await
 
-class UserRepository constructor(
+class UserRepository(
     private val userPreference: UserPreference,
-    private val apiService: ApiService
+    private val firebaseAuth: FirebaseAuth
 ) {
 
+    suspend fun login(email: String, password: String): ResultState {
+        return try {
+            val authResult = firebaseAuth.signInWithEmailAndPassword(email, password).await()
+            val user = authResult.user?.let {
+                UserModel(it.uid, it.email ?: "")
+            }
+
+            if (user != null) {
+                userPreference.saveSession(user)
+            }
+
+            ResultState.Success
+        } catch (e: FirebaseAuthException) {
+            ResultState.Error(e)
+        } catch (e: Exception) {
+            ResultState.Error(e)
+        }
+    }
+
+    suspend fun register(email: String, password: String): ResultState {
+        return try {
+            val authResult = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
+            val user = authResult.user?.let {
+                UserModel(it.uid, it.email ?: "")
+            }
+
+            if (user != null) {
+                userPreference.saveSession(user)
+            }
+
+            ResultState.Success
+        } catch (e: FirebaseAuthException) {
+            ResultState.Error(e)
+        } catch (e: Exception) {
+            ResultState.Error(e)
+        }
+    }
     suspend fun saveSession(user: UserModel) {
         userPreference.saveSession(user)
     }
@@ -25,34 +59,7 @@ class UserRepository constructor(
     }
 
     suspend fun logout() {
+        firebaseAuth.signOut()
         userPreference.logout()
-    }
-
-    fun register(nama: String, email: String, password: String) = liveData {
-        emit(ResultState.Loading)
-        try {
-            val successResponse = apiService.register(nama, email, password)
-            emit(ResultState.Success(successResponse))
-        } catch (e: HttpException) {
-            val errorBody = e.response()?.errorBody()?.string()
-            val errorResponse = Gson().fromJson(errorBody, ErrorResponse::class.java)
-            emit(ResultState.Error(errorResponse.message))
-        }
-    }
-
-    fun login(email: String, password: String) = liveData {
-        emit(ResultState.Loading)
-        try {
-            val successResponse = apiService.login(email, password)
-            emit(ResultState.Success(successResponse))
-        } catch (e: Exception) {
-            if (e is HttpException) {
-                val jsonInString = e.response()?.errorBody()?.string()
-                val errorBody = Gson().fromJson(jsonInString, RegisterResponse::class.java)
-                emit(ResultState.Error(errorBody.message.toString()))
-            } else {
-                emit(ResultState.Error(e.message.toString()))
-            }
-        }
     }
 }
