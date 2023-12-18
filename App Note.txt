@@ -1,0 +1,5 @@
+Versi Python
+1. Ganti basepath, sesuaikan sama path file csv yang tersedia
+2. Lakukan install Python jika tidak bisa dijalankan(optional)
+3. lakukan pip install flask agar flask dapat berjalan
+
