@@ -4,6 +4,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
+from sklearn.neighbors import NearestNeighbors
 import tensorflow as tf
 import pandas as pd
 
@@ -33,18 +34,20 @@ book = pd.read_csv(basePath+'/Buku.csv')
 # book = pd.read_sql(sql_query, engine)
 
 # # Drop unnecessary columns
-# book.drop(axis=1, labels=['P-ISSN', 'Pdf', 'Reference'], inplace=True)
+book.drop(axis=1, labels=['P-ISSN', 'Pdf', 'Reference'], inplace=True)
 
-book['BookID'] = range(len(book))
 tfidf_vectorizer = TfidfVectorizer()
 keyword_matrix = tfidf_vectorizer.fit_transform(book['Judul'] + ' ' + book['Keyword'] + ' ' + book['Abstrak'] + ' ' + book['TahunTerbit'].astype(str))
 
+book['BookID'] = range(len(book))
+modelK = NearestNeighbors(n_neighbors=5, metric='cosine')
+modelK.fit(keyword_matrix)
+
 def get_keyword_recommendations(keyword, year):
     input_vector = tfidf_vectorizer.transform([keyword + " " + str(year)])
-    keyword_similarities = cosine_similarity(keyword_matrix, input_vector)
-    book['Similarity'] = keyword_similarities.flatten()
-    sorted_books = book.sort_values(by=['Similarity', 'TahunTerbit'], ascending=[False, False])
-    top_books = sorted_books.head(5)
+    _, indices = modelK.kneighbors(input_vector)
+    similar_books = indices.flatten()
+    top_books = book.iloc[similar_books].head(5)
     return top_books.to_dict(orient='records')
 
 @app.route('/recommendations', methods=['POST'])
