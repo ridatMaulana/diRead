@@ -1,6 +1,10 @@
 from flask import Flask, request, jsonify
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+import numpy as np
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+import tensorflow as tf
 import pandas as pd
 
 app = Flask(__name__)
@@ -50,6 +54,35 @@ def get_recommendations():
     tahun = data.get('tahun', 'String')
     keyword_recommendations = get_keyword_recommendations(keyword, tahun)
     return jsonify({"recommendations": keyword_recommendations})
+
+scaler = StandardScaler()
+train_data, test_data = train_test_split(book, test_size=0.2, random_state=42)
+
+tfdf = TfidfVectorizer()
+X_train = tfdf.fit_transform(train_data['Judul'])
+X_test = tfdf.transform(test_data['Judul'])
+
+y_train = scaler.fit_transform(train_data['TahunTerbit'].values.reshape(-1, 1))
+y_test = scaler.transform(test_data['TahunTerbit'].values.reshape(-1, 1))
+
+# Define and train the model
+model = tf.keras.Sequential([
+    tf.keras.layers.Dense(128, activation='relu', input_shape=(X_train.shape[1],)),
+    tf.keras.layers.Dense(1)
+])
+
+model.compile(optimizer='adam', loss='mse', metrics=['mae'])
+model.fit(X_train.toarray(), y_train, epochs=10, batch_size=32, validation_split=0.2)
+
+# API endpoint for predictions
+@app.route('/predict', methods=['POST'])
+def predict():
+    data = request.get_json(force=True)
+    input_data = tfdf.transform([data['judul']])
+    prediction = model.predict(input_data.toarray())
+    predicted_year = scaler.inverse_transform(prediction)[0][0]
+    year = int(predicted_year)
+    return jsonify({'predicted_year': year})
 
 if __name__ == '__main__':
     app.run(debug=True)
