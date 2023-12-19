@@ -14,7 +14,7 @@
 >We visualize the data to see the amount of data in percentages and the correlation between features.
 
 #### Build Models
->The predict year model, we use DNN (Deep Neural Network) because the data is categorical. We use 2 layers with 32 outputs based on personality classes in the dataset. For the recommendation(Search Engine) we use K-nearest Neighbors Algorithm model to get data that is similar to the given keywords.
+>The predict year model, we use DNN (Deep Neural Network) because the data is categorical. We use 2 layers with 32 outputs based on personality classes in the dataset. For the recommendation(Search Engine) we use K-nearest Neighbors Algorithm model to get data that is similar to the given keywords from users.
 
 #### Test Models
 >After building models, we evaluate model performance using evaluation metrics and techniques such as encross-validation. Then, We try to make our own simulation to test whether the model we have is good.
