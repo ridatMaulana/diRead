@@ -6,8 +6,10 @@
 
 >In deploying the model, machine learning uses the [flask](https://flask.palletsprojects.com/en/3.0.x/) package. When deploying the files used can be seen [here](https://github.com/ridatMaulana/diRead/blob/a8ce1bed0d791c5f6201f78b15a0d710e616965c/bookSearchEngine.py). An example of local deployment can be seen in the image below.
 
-> Running File using **Python BookSearchEngine**
+### Running File using **Python BookSearchEngine.py**
 
 #### Predict Year
+![Predict Year Image](../model-recommendation/Predict.png)
 
 #### Recommendation Journal
+![Recommendation Journal Image](../model-recommendation/Recommendation.png)
