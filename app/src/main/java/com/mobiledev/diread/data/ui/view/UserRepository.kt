@@ -1,16 +1,19 @@
 package com.mobiledev.diread.data.ui.view
 
+import androidx.lifecycle.LiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 import com.mobiledev.diread.data.ResultState
 import com.mobiledev.diread.data.pref.UserModel
 import com.mobiledev.diread.data.pref.UserPreference
+import com.mobiledev.diread.remote.retrofit.ApiService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.tasks.await
 
 class UserRepository(
     private val userPreference: UserPreference,
     private val firebaseAuth: FirebaseAuth
+    private val apiService: ApiService
 ) {
 
     suspend fun login(email: String, password: String): ResultState {
@@ -58,6 +61,7 @@ class UserRepository(
         return userPreference.getSession()
     }
 
+    fun getJurnal():LiveData<List<Jurnal>> = apiService.getJurnal()
     suspend fun logout() {
         firebaseAuth.signOut()
         userPreference.logout()
