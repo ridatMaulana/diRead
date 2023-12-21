@@ -1,5 +1,6 @@
 # diRead
 ## About Our App
+>diRead is an innovative application designed to make it easier for users to explore and search for journals in various categories. This application offers a variety of features to enhance the reading experience and understanding of journal content.
 >This application is a journal repository created to help make it easier to search for journals as references in writing scientific papers. This application is equipped with a search engine feature so that you can use the search engine to help search for journals. This application can also display journal articles.
 ### 1. Background
 >The digital book and journals market has exploded with a plethora of options, making it challenging for readers to find books and journals that align with their unique tastes. Existing books and journals recommendation systems often fall short in delivering personalized suggestions. diRead seeks to bridge this gap by utilizing machine learning algorithms to understand user preferences and offer books and journals recommendations tailored to each individual.
