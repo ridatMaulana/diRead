@@ -3,38 +3,39 @@ package com.mobiledev.diread.data.ui.view.main
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import com.mobiledev.diread.data.ui.view.UserRepository
-import com.mobiledev.diread.remote.retrofit.ApiConfig
-import com.mobiledev.diread.remote.retrofit.ApiService
-import retrofit2.Call
-import retrofit2.Response
-import javax.security.auth.callback.Callback
+import kotlinx.coroutines.launch
 
-class MainViewModel(repository: UserRepository): ViewModel {
-    private val _listJurnal=MutableLiveData<List<ItemsItem>>()
-    val listJurnal:LiveData<List<ItemsItem>> =_listJurnal
+class MainViewModel(private val userRepository: UserRepository): ViewModel() {
+    private val _userSession = MutableLiveData<String?>()
+    val userSession: LiveData<String?>
+        get() = _userSession
+
+
     private val _isLoading = MutableLiveData<Boolean>()
-    val isLoading: LiveData<Boolean> = _isLoading
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
 
-    fun getUser(){
-        _isLoading.postValue(true)
-        val client=ApiConfig.getApiService().getJurnal()
-        client.enquene(object :Callback<blabal>{
-            override fun onResponse(
-                call: Call<blabal>,
-                response: Response<balabl>
-            ){
-                if(response.isSuccessful){
-                    val balabla=response.body()
-                    _listJurnal.postValue(balabla)
-                }
-                _isLoading.postValue(blabal)
+    private val _error = MutableLiveData<String>()
+    val error: LiveData<String>
+        get() = _error
+
+
+    init {
+        getSession()
+    }
+    fun getSession() {
+        viewModelScope.launch {
+            userRepository.getToken().collect { session ->
+                _userSession.value = session
             }
-            override fun onFailure(call: Call<GithubResponse>, t: Throwable) {
-                _isLoading.postValue(false)
-
-            }
-        })
-
+        }
+    }
+    fun logout() {
+        viewModelScope.launch {
+            userRepository.logout()
+        }
     }
 }

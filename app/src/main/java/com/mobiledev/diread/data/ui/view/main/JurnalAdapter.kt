@@ -1,51 +1,80 @@
 package com.mobiledev.diread.data.ui.view.main
 
+import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import android.widget.ListAdapter
-import androidx.recyclerview.widget.DiffUtil
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.mobiledev.diread.R
+import com.mobiledev.diread.data.item.Jurnal
+import com.mobiledev.diread.data.ui.view.bookmark.Bokmark
+import com.mobiledev.diread.data.ui.view.detailJurnal.DetailJournalActivity
 
-class JurnalAdapter(private val onItemClick:(balbal)->Unit):ListAdapter<bablbal,JurnalAdapter.MyHolder>(DIFF_CALLBACK) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = ItemJurnalBinding.inflate(inflater, parent, false)
-        return MyHolder(binding)
+class JurnalAdapter(var jurnalList: List<Jurnal>, private var bookmarkClickListener: OnBookmarkClickListener) :
+    RecyclerView.Adapter<JurnalAdapter.ListViewHolder>() {
+
+    interface OnBookmarkClickListener {
+        fun onBookmarkClick(jurnal: Jurnal)
     }
 
-    override fun onBindViewHolder(holder: MyHolder, position: Int) {
-        val items = getItem(position)
-        holder.bind(items)
+    fun setOnBookmarkClickListener(listener: OnBookmarkClickListener) {
+        this.bookmarkClickListener = listener
+    }
+    private var filteredList: List<Jurnal> = jurnalList
 
+    class ListViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview) {
+        val gambar: ImageView = itemview.findViewById(R.id.imageJurnal)
+        val judulJurnal: TextView = itemview.findViewById(R.id.judulJurnal)
+        val abstract: TextView = itemview.findViewById(R.id.abstrack)
+        val icon: ImageView = itemview.findViewById(R.id.iconBookmark)
     }
 
-    class MyHolder(val binding: ItemJurnalBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: ItemsItem) {
-            binding.clickableText.text = item.login
-            binding.textViewJournalAbstract.text=item.description
-            Glide.with(binding.imageViewJournalThumbnail.context)
-                .load(item.gambar)
-                .into(binding.imageViewJournalThumbnail)
-        }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.journal_item, parent, false)
+        return ListViewHolder(itemView)
     }
 
-    companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ItemsItem>() {
-            override fun areItemsTheSame(oldItem: ItemsItem, newItem: ItemsItem): Boolean {
-                return oldItem == newItem
+    fun setFilter(List: List<Jurnal>) {
+        this.jurnalList = List
+    }
+
+
+    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
+        if (position < filteredList.size) {
+            val (gambar, judul, abstract, webLink, bookmarked) = filteredList[position]
+            val jurnal=filteredList[position]
+            holder.gambar.setImageResource(gambar)
+            holder.judulJurnal.text = judul
+            holder.abstract.text = abstract
+
+            holder.itemView.setOnClickListener {
+                val intentDetail =
+                    Intent(holder.itemView.context, DetailJournalActivity::class.java)
+                intentDetail.putExtra("shadow", jurnalList[holder.adapterPosition])
+                holder.itemView.context.startActivities(arrayOf(intentDetail))
             }
 
-            override fun areContentsTheSame(oldItem: ItemsItem, newItem: ItemsItem): Boolean {
-                return oldItem == newItem
+
+            holder.icon.setOnClickListener {
+                val updatedBookmarkState = !jurnal.isBookmarked
+                jurnalList.firstOrNull { it == jurnal }?.isBookmarked = updatedBookmarkState
+                if (updatedBookmarkState==true) {
+                    holder.icon.setImageResource(R.drawable.baseline_bookmark_24)
+                    notifyItemChanged(position)
+                } else if (updatedBookmarkState==false){
+                    holder.icon.setImageResource(R.drawable.bookmarkosong)
+                }else{
+
+                }
+                bookmarkClickListener.onBookmarkClick(jurnal)
             }
         }
+
     }
 
-    override fun onBindViewHolder(holder: MyHolder, position: Int, payloads: MutableList<Any>) {
-        val items = getItem(position)
-        holder.bind(items)
-        holder.itemView.setOnClickListener {
-            onItemClick.invoke(items)
-        }
-    }
+
+    override fun getItemCount(): Int = jurnalList.size
 }

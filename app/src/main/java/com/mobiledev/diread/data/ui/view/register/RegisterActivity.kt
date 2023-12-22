@@ -7,33 +7,25 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.viewModels
-import com.google.android.material.progressindicator.LinearProgressIndicator
-import com.google.firebase.auth.FirebaseAuth
-import com.mobiledev.diread.R
-import com.mobiledev.diread.data.ResultState
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.viewModelScope
+import com.example.submisionintermediate.data.response.RegisterResponse
 import com.mobiledev.diread.data.ui.view.ViewModelFactory
 import com.mobiledev.diread.data.ui.view.login.LoginActivity
 import com.mobiledev.diread.databinding.ActivityRegisterBinding
+import kotlinx.coroutines.launch
 
 class RegisterActivity : AppCompatActivity() {
-    private lateinit var progressIndicator: LinearProgressIndicator
+    private val viewModel by viewModels<RegisterViewModel> { ViewModelFactory.getInstance(this) }
     private lateinit var binding: ActivityRegisterBinding
-    private lateinit var firebaseAuth: FirebaseAuth
-
-    private val viewModel by viewModels<RegisterViewModel> {
-        ViewModelFactory.getInstance(this)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        progressIndicator = findViewById(R.id.progressIndicator)
-
+        showLoading(false)
         setupView()
         setupAction()
     }
@@ -52,34 +44,27 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun setupAction() {
-        firebaseAuth = FirebaseAuth.getInstance()
-
-        binding.clickableText.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-        }
-
         binding.btnSignup.setOnClickListener {
-            val name = binding.edtName.text.toString()
-            val email = binding.edtEmail.text.toString()
+            showLoading(true)
+            val name = binding.edtName.text.toString().trim()
+            val email = binding.edtEmail.text.toString().trim()
             val password = binding.passwordEditText.text.toString()
 
-            viewModel.register(name, email, password)
-        }
+            viewModel.viewModelScope.launch {
+                try{
+                    val response: RegisterResponse =viewModel.register(name, email, password)
+                    if(response.error==false){
+                        startActivity(Intent(this@RegisterActivity,LoginActivity::class.java))
+                        finish()
+                    }else{
+                        Toast.makeText(this@RegisterActivity,"pendaftaran gagal:${response.message}",Toast.LENGTH_SHORT).show()
+                    }
 
-        viewModel.registrationResult.observe(this) { result ->
-            when (result) {
-                is ResultState.Loading -> {
-                    showLoading(true)
-                }
-                is ResultState.Success -> {
-                    val intent = Intent(this, LoginActivity::class.java)
-                    startActivity(intent)
-                }
-                is ResultState.Error -> {
-                    showToast(result.error.toString())
+                }catch (e:Exception){
+                    Toast.makeText(this@RegisterActivity,"pendaftaran gagal:${e.message}",Toast.LENGTH_SHORT).show()
                 }
             }
+            showLoading(false)
         }
     }
 

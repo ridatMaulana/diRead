@@ -1,69 +1,54 @@
 package com.mobiledev.diread.data.ui.view
 
-import androidx.lifecycle.LiveData
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthException
-import com.mobiledev.diread.data.ResultState
-import com.mobiledev.diread.data.pref.UserModel
+import com.example.submisionintermediate.data.response.LoginResponse
+import com.example.submisionintermediate.data.response.RegisterResponse
 import com.mobiledev.diread.data.pref.UserPreference
 import com.mobiledev.diread.remote.retrofit.ApiService
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 
-class UserRepository(
-    private val userPreference: UserPreference,
-    private val firebaseAuth: FirebaseAuth
-    private val apiService: ApiService
+class UserRepository private constructor(
+    private val userPreference: UserPreference, val apiService: ApiService
 ) {
-
-    suspend fun login(email: String, password: String): ResultState {
-        return try {
-            val authResult = firebaseAuth.signInWithEmailAndPassword(email, password).await()
-            val user = authResult.user?.let {
-                UserModel(it.uid, it.email ?: "")
-            }
-
-            if (user != null) {
-                userPreference.saveSession(user)
-            }
-
-            ResultState.Success
-        } catch (e: FirebaseAuthException) {
-            ResultState.Error(e)
-        } catch (e: Exception) {
-            ResultState.Error(e)
-        }
+    suspend fun simpanPosisi(kode: String) {
+        userPreference.simpanPosisi(kode)
     }
 
-    suspend fun register(email: String, password: String): ResultState {
-        return try {
-            val authResult = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
-            val user = authResult.user?.let {
-                UserModel(it.uid, it.email ?: "")
-            }
-
-            if (user != null) {
-                userPreference.saveSession(user)
-            }
-
-            ResultState.Success
-        } catch (e: FirebaseAuthException) {
-            ResultState.Error(e)
-        } catch (e: Exception) {
-            ResultState.Error(e)
-        }
-    }
-    suspend fun saveSession(user: UserModel) {
-        userPreference.saveSession(user)
+    fun getToken(): Flow<String?> {
+        return userPreference.getUser()
     }
 
-    fun getSession(): Flow<UserModel> {
-        return userPreference.getSession()
-    }
-
-    fun getJurnal():LiveData<List<Jurnal>> = apiService.getJurnal()
     suspend fun logout() {
-        firebaseAuth.signOut()
         userPreference.logout()
+    }
+
+    suspend fun login(email: String, password: String): Flow<Result<LoginResponse>> = flow {
+        try {
+            val response = apiService.login(email, password)
+            emit(Result.success(response))
+        } catch (e: Exception) {
+            e.printStackTrace()
+            emit(Result.failure(e))
+        }
+    }.flowOn(Dispatchers.IO)
+
+
+    suspend fun register(name: String, email: String, password: String): RegisterResponse = try {
+        apiService.register(name, email, password)
+    } catch (e: Exception) {
+        throw e
+    }
+
+
+    companion object {
+        @Volatile
+        private var instance: UserRepository? = null
+        fun getInstance(
+            userPreference: UserPreference, apiService: ApiService
+        ): UserRepository = instance ?: synchronized(this) {
+            instance ?: UserRepository(userPreference, apiService)
+        }.also { instance = it }
     }
 }

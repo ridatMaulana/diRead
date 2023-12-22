@@ -18,12 +18,7 @@
         <activity
             android:name=".data.ui.view.detailJurnal.DetailJournalActivity"
             android:exported="false" />
-        <activity
-            android:name=".data.ui.view.collection.CollectionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".data.ui.view.profile.ProfileActivity"
-            android:exported="false" />
+
         <activity
             android:name=".data.ui.view.register.RegisterActivity"
             android:exported="false" />
@@ -31,11 +26,12 @@
             android:name=".data.ui.view.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".data.ui.view.main.MainActivity"
-            android:exported="false" />
-        <activity
             android:name=".data.ui.view.welcome.WelcomeActivity"
-            android:exported="true">
+            android:exported="false"/>
+        <activity
+            android:name=".data.ui.view.main.MainActivity"
+            android:exported="true" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

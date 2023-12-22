@@ -25,4 +25,81 @@
     <string name="email">Email</string>
     <string name="journal_title">Journal Title</string>
     <string name="journal_abstract">Journal Abstract</string>
+    <string name="logout">logout</string>
+    <string name="diread">diRead</string>
+    <string name="story">story</string>
+
+    <string name="tab_text_1">Home</string>
+    <string name="tab_text_2">Bookmark</string>
+    <string name="tab_text_3">Profile</string>
+
+    <string-array name="judul_jurnal">
+        <item>Perilaku Sosial Anak Putus Sekolah</item>
+        <item>Web Scraping, Text Mining, Akuisisi Informasi, Kategorisasi Informasi, Hidroponik</item>
+        <item>ANALISIS USAHA AGROINDUSTRI TAHU DI DESA KAMPUNG </item>
+        <item>Rapor Pendidikan Indonesia: Quo Vadis Kualitas Pendidikan </item>
+        <item>Analisa Pengaruh Virtual Reality Terhadap Perkembangan </item>
+
+        <item>Pengembangan Game Interaktif Wordwall untuk </item>
+        <item>Strategi Literasi Budaya Anak Usia Dini melalui Pengembangan </item>
+        <item>Pengembangan Game Edukasi 3D untuk Menumbuhkan Cinta </item>
+        <item>Pengembangan Game Edukasi Berbasis Android untuk Meningkatkan Hasil Belajar Siswa di Sekolah Dasar</item>
+        <item>WEBSITE E-COMMERCE MENGGUNAKAN MODEL VIEW </item>
+    </string-array>
+    <string-array name="Abstrack">
+        <item>Penelitian ini bertujuan untuk mengetahui perilaku sosial dan faktor penyebab anak putus sekolah di masyarakat Pattallassang Kabupaten Takalar. Penelitian yang dilaksanakan merupakan penelitian social budaya yang jenis penelitian yang digunakan adalah metode penelitian deskriptif kualitatif dengan cara penentuan sampel melalui teknik Purposive Sampling dengan memilih beberapa informan yang memiliki kriteria yang telah ditentukan oleh peneliti yakni mengetahui tentang Perilaku Sosial Anak Putus Sekolah. Dari hasil penelitian menunjukkan bahwa berdasarkan deskripsi hasil penelitian dan pembahasan menunjukkan  bahwa faktor penyebab anak putus sekolah di masyarakat Pattallassang Kabupaten Takalar Secara umum adalah kondisi ekonomi keluarga yang kurang mendukung, factor lingkungan dan dari diri anak itu sendiri. Sementara perilaku sosial anak putus sekolah memperlihatkan bahwa perilakunya cenderung kepada hal-hal bersifat negatif, seperti: menjadi lebih nakal, sering keluar malam untuk berkumpul dengan teman-temannya, melakukan tindakan kekerasan, mabuk-mabukan, sampai mengkonsumsi narkoba. Namun, berbeda dengan anak putus sekolah kemudian melakukan aktivitas lain, seperti bekerja dan membantu orang tuanya mereka cenderung melakukan perilaku yang positif. Berbagai upaya juga dilakukan pemerintah setempat dalam mencegah terjadinya anak putus sekolah.
+        </item>
+        <item>scraping yang dikombinasikan dengan text mining untuk secara otomatis mengakuisisi informasi dari laman-laman web yang memuat informasi mengenai hidroponik dan mengkategorisasikannya berdasarkan topik yang lebih spesifik dari artikel hidroponik yang terdapat dalam laman web tersebut. Dari eksperimen yang sudah dilakukan, web scraping dan text mining berhasil diimplementasikan untuk mengakuisisi artikel-artikel terkait hidroponik dari internet dan mengelompokkannya ke dalam beberapa kategori berdasarkan topik artikel secara otomatis.</item>
+        <item>Penelitian ini bertujuan: 1) Untuk mengetahui tingkat biaya dan pendapatan usaha agroindustri tahu di Desa Kampung Medan Kecamatan Kuantan Hilir Kabupaten Kuantan Singingi, 2) Untuk mengetahui tingkat efisiensi usaha agroindustri tahu di Desa Kampung Medan Kecamatan Kuantan Hilir Kabupaten Kuantan Singingi. Metode yang digunakan dalam penelitian ini adalah analisis kuantitatif secara matematik yang menggunakan analisis keuntungan dan analisis efisiensi. Dari hasil penelitian diperoleh biaya yang dikeluarkan dalam usaha agroindustri tahu di Desa Kampung Medan sebesar Rp. 895.727,78/proses produksi dan pendapatan kotor yang diperoleh sebesar Rp. 1.500.000,00/proses produksi dan pendapatan bersih yang diperoleh sebesar Rp. 604.272,22/proses produksi. Dari hasil penelitian ini diperoleh tingkat efisiensi usaha agroindustri tahu sebesar 1,67, artinya setiap biaya yang dikeluarkan Rp. 1,00 akan menghasilkan pendapatan kotor sebesar Rp. 1,67 atau pendapatan bersih sebesar Rp. 0,67. Dengan demikian usaha tahu di Desa Kampung Medan ini layak untuk dikembangkan.
+        </item>
+        <item>Tujuan dari studi ini adalah untuk mengetahui peningkatkan kualitas Pendidikan di Indonesia dengan cara memberikan informasi yang terintegritas dan berbasis data kepada satuan pendidikan dan pemerintah daerah untuk melakukan refleksi dan perbaikan. Pada laporan studi ini menggunakan metode kualitatif deskriptif dengan melakukan simak catat karena sumber data yang diperoleh dengan menyimak narasi lisan dari channel Youtube Kemendikbud RIyang berjudul “Merdeka Belajar Episode 19: Rapor Pendidikan Indonesia” yang dipaparkan olehnya. Hasil studi ini menjelaskan bahwa raport Pendidikan Indonesia membantu satuan Pendidikan dan pemerintah daerah mengidentifikasi tantangan Pendidikan di satuan Pendidikan dan menjadi bahan untuk refleksi sehingga bisa meyusun rencana perbaikan Pendidikan secara lebih tepat dan berbasis data, serta menyajikan hasil asesmen nasional dan data lain mengenai capaian hasil belajar satuan Pendidikan ke dalam suatu tampilan terintegritas dan informasi mengenai kualitas dan ketimpangan secara sederhana yang mudah dipahami, mengintegritasikan berbagai data Pendidikan untuk membantu satuan Pendidikan dan dinas Pendidikan mengindentifikasikan capaian dan akar masalah.
+        </item>
+        <item>Kemajuan teknologi yang pesat telah membawa integrasi Realitas Virtual (RV) ke berbagai sektor pendidikan di seluruh dunia, termasuk Indonesia. Fokus dari penelitian ini adalah untuk mengevaluasi dampak penggunaan Realitas Virtual pada perkembangan pendidikan di Indonesia. Melalui tinjauan pustaka yang komprehensif dan analisis empiris, studi ini membahas manfaat potensial dan tantangan yang mungkin timbul dari implementasi teknologi  RV  dalam  konteks  pendidikan.  Selain  itu,  penelitian  ini  juga  menyelidiki  bagaimana  RV  dapat memperkaya metode pengajaran tradisional, melibatkan siswa dalam proses pembelajaran yang mendalam, dan meningkatkan  pemahaman  mereka  tentang  konsep-konsep  kompleks.  Penelitian  ini  berisi  analisis  tentang pengaruh  realitas  virtual  pada  perkembangan  pendidikan  di  Indonesia,  di  mana  para  peneliti  akan mendistribusikan kuesioner online dan mengumpulkan sampel responden untuk menyimpulkan pertanyaan terkait realitas  virtual.  Penelitian  ini  akan  berkontribusi  pada  literatur  yang  ada,  terutama  pada  faktor-faktor  yang mempengaruhi adopsi model RV untuk Media Pembelajaran
+        </item>
+        <item>Pembelajaran anak mengenai moral dan akhlak kepada orang tua saat ini belum bisa diterapkan dengan begitu baik. Salah satu kendala yang dihadapi pada proses pembelajaran yaitu kurangnya penyampaian yang menarik. Dalam pengabdian nya sebagai seorang tenaga pendidik , maka dalam proses pembelajaran kepada anak tentu harus mengedepankan melalui penyampaian belajar sambil bermain. Hal tersebut dapat dilakukan karena seorang tenaga pendidik harus dapat memahami bahwasanya pada anak seusia sekolah dasar lebih cenderung terhadap bermain. Maka dari itu, para pendidik dituntut agar bisa menyesuaikan dengan perkembangan anak yaitu membuat metode pembelajaran yang menyenangkan melalui metode bermain sambil belajar agar anak dapat lebih semangat untuk mengikuti proses pembelajaran karena bermain sambil belajar memiliki keutamaan untuk mengasuh kemampuan perkembangan dan keterampilan anak sebagaimana langkah awal dalam mendidik akhlak untuk lebih menanamkan pendidikan agama islam kepada peserta didik. Penelitian yang digunakan dalam metode penelitian ini yaitu, Design and Development (DD) menggunakan model Analyze, Design, Develompent, Implementation, Evaluation (ADDIE). seusia anak sekolah dasar cenderung bermain sambil belajar sehingga penggunaan game interaktif wordwall dipilih sebagai salah satu media pembelajaran.
+        </item>
+        <item>Game dapat membantu anak usia dini (AUD) untuk digunakan dalam proses belajar yang menyenangkan. Selain itu, pembelajaran budaya juga dapat sebagai sarana untuk memacu kreativitas anak sehingga diperlukan media pembelajaran yang menarik. Tujuan penelitian ini adalah mengembangkan media game edukasi untuk meningkatkan literasi budaya untuk anak usia dini. Media game edukasi yang dihasilkan berbentuk gambar dan musik produk budaya daerah yang ada di Indonesia. Metode penelitian ini adalah R&amp;D (Research and Development) berdasarkan model ADDIE (Analyze, Design, Development, Implementation, dan Evaluation) dari Robert Maribe Branch. Penelitian ini fokus pada tahap analyze, design, dan development, sedangkan tahap implementation dan evaluation akan dilaksanakan pada tahun berikutnya. Teknik pengumpulan data penelitian ini menggunakan kuesioner dan teknik analisis data adalah analisis deskriptif kuantitatif. Hasil penelitian ini adalah aplikasi yang bernama “GRADASI: Game Literasi Budaya Anak Usia Dini”. Aplikasi ini berupa game edukasi yang berisi kuis-kuis seputar budaya di Indonesia. Budaya Indonesia yang digunakan sebagai kuis berfokus pada makanan, tarian, rumah adat, serta bangunan yang menjadi ciri khas masing-masing provinsi. Implikasi pengembangan game edukasi ini adalah dapat meningkatkan literasi budaya untuk AUD, menumbuhkan sikap rasa cinta pada tanah air sejak AUD, serta mengetahui keberagaman suku budaya di Indonesia.
+        </item>
+        <item>Saat ini pegaruh budaya Barat menyebabkan gaya hidup anak usia dini berubah dan mulai meninggalkan budaya asli Indonesia, maka tujuan dari penelitian ini untuk pengembangan bahan pembelajaran yakni game edukasi 3D dalam menghadapi masalah saat ini khususnya kurangnya rasa cinta pada tanah air Indonesia untuk anak usia dini. Penelitian ini memakai metode R&amp;D menggunakan model ADDIE. Hasilnya menunjukan bahwa penelitian ini layak digunakan berdasarkan uji validasi oleh 3 validator mengatakan sangat valid. Validasi ahli ini ada 3 yaitu ahli pada media pengembangan, ahli pada materi pembelajaran dan ahli pada desain pembelajaran. Berdasarkan dari hasil pengujian bisa diberi kesimpulan bahwa pengembangan media game digital edukasi 3D ini bisa digunakan sebagai bahan pembelajaran guna menunjang guru saat penyampaian proses pembelajaran yang menggembirakan. Sehingga menumbuhkan cinta pada tanah air Indonesia kepada anak sejak dini.
+        </item>
+        <item>Media pembelajaran adalah alat bantu guru untuk menyampaikan informasi dalam kegiatan pembelajaran. Namun saat ini masih banyak Sekolah Dasar yang melaksanakan kegiatan pembelajaran hanya menggunakan media dalam bentuk audio visual, alat peraga, dan benda-benda di sekitar saja sehingga membuat siswa mudah bosan saat mengikuti kegiatan pembelajaran. Dengan adanya teknologi dapat dijadikan media pembelajaran yang menarik berupa game edukasi berbasis android. Tujuan dari penelitian ini yaitu mengetahui tingkat validitas menurut pendapat ahli mengenai produk pengembangan Game Edukasi Berbasis Android Untuk Meningkatkan Hasil Belajar Pada Siswa Kelas IV. Jenis penelitian ini adalah pengembangan atau Research and Development (R&amp;D). Penelitian dilaksanakan dengan menggunakan model desain pengembangan ASSURE yaitu Analisis Siswa (Analisis Learner), Menetapkan Tujuan (State Objektive), Memilih metode, media dan Materials (Select Method, Media &amp; Materials), Memanfaatkan Media dan Bahan ajar (Utizile media &amp; Materials), Melibatkan siswa dalam kegiatan pembelajaran (Require Learner),dan Evaluasi dan revisi (Evaluasi &amp; Revise). Data hasil uji validasi ahli diperoleh sebagai berikut: (1) persentase yang diperoleh dari uji validasi ahli materi sebesar 73% dengan kriteria penilaian yang didapatkan adalah tinggi; (2) presentase yang diperoleh dari uji validasi ahli media sebesar 97% dengan kriteria penilaian yang didapatkan adalah sangat tinggi. Berdasarkan uji validasi dari ahli media dan ahli materi, dapat disimpulkan bahwa media pembelajaran berupa Game Edukasi Berbasis Android Untuk Meningkatkan Hasil Belajar Tema 7 Pada Siswa Kelas IV dapat dikatakan layak digunakan.
+        </item>
+        <item>Buying and selling is already often done in life. Buyers come to the seller to make the purchase. But it can be made easy with electronic commerce (e-commerce). E-commerce utilizing Internet technology that is already familiar to most people. By using the website, the seller can display the product so buyers do not have to come to the seller formerly. The use of Model View Controller would be helpful in the application development because it will be more easily understood by developers. MVC mechanism is a separate application development based major components that build an application such as the manipulation of data (model), user interface (View), and part of the control (Controller) in a web application. CodeIgniter Framework will be applied in making the application because it has libraries in it so that it will ease the development of applications. The implementation of MVC (Model View Controller) with CodeIgniter Framework, applications become easier to be developed by the next developer. Mobile applications by applying the Framework Phonegap will easier for mobile device users to obtain information about the products. This system has a push notification feature that makes the admin or employee can obtain information quickly and timely.
+        </item>
+    </string-array>
+    <string-array name="link_web">
+        <item>https://journal.unismuh.ac.id/index.php/equilibrium/article/view/500
+        </item>
+        <item>https://ojs.uajy.ac.id/index.php/IJIS/article/view/1664
+        </item>
+        <item>https://www.ejournal.uniks.ac.id/index.php/GREEN/article/view/2214
+        </item>
+        <item>https://jisma.org/index.php/jisma/article/view/633
+        </item>
+        <item>https://jurnal.stikes-ibnusina.ac.id/index.php/INOVED/article/view/206
+        </item>
+        <item>https://jbasic.org/index.php/basicedu/article/view/2737
+        </item>https://www.murhum.ppjpaud.org/index.php/murhum/article/view/287
+        <item>https://mail.obsesi.or.id/index.php/obsesi/article/view/3378
+        </item>
+        <item>https://jbasic.org/index.php/basicedu/article/view/835
+        </item>
+        <item>https://ojs.amikom.ac.id/index.php/dasi/article/view/225
+        </item>
+    </string-array>
+    <integer-array name="data_gambar">
+        <item>@drawable/imag1</item>
+        <item>@drawable/imag2</item>
+        <item>@drawable/imag3</item>
+        <item>@drawable/imag4</item>
+        <item>@drawable/imag5</item>
+        <item>@drawable/imag6</item>
+        <item>@drawable/imag7</item>
+        <item>@drawable/imag8</item>
+        <item>@drawable/imag9</item>
+        <item>@drawable/imag10</item>
+    </integer-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="diread_gmail_com">diread@gmail.com</string>
 </resources>

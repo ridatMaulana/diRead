@@ -7,33 +7,30 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.progressindicator.LinearProgressIndicator
-import com.mobiledev.diread.R
-import com.mobiledev.diread.data.ResultState
 import androidx.activity.viewModels
-import com.google.firebase.auth.FirebaseAuth
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.viewModelScope
+import com.mobiledev.diread.data.ui.view.UserRepository
 import com.mobiledev.diread.data.ui.view.ViewModelFactory
 import com.mobiledev.diread.data.ui.view.main.MainActivity
+import com.mobiledev.diread.data.ui.view.register.RegisterActivity
 import com.mobiledev.diread.databinding.ActivityLoginBinding
+import com.mobiledev.diread.di.Injection
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
-    private lateinit var progressIndicator: LinearProgressIndicator
-    private lateinit var binding: ActivityLoginBinding
-    private lateinit var firebaseAuth: FirebaseAuth
-
-    private val viewModel by viewModels<LoginViewModel> {
-        ViewModelFactory.getInstance(this)
-    }
+    private val viewModel by viewModels<LoginViewModel> { ViewModelFactory.getInstance(this) }
+    private lateinit var binding:ActivityLoginBinding
+    private lateinit var userRepository: UserRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        progressIndicator = findViewById(R.id.progressIndicator)
-
+        userRepository= Injection.provideRepository(this)
+        showLoading(false)
         setupView()
         setupAction()
     }
@@ -52,10 +49,9 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setupAction() {
-        firebaseAuth = FirebaseAuth.getInstance()
 
         binding.clickableText.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
 
@@ -63,20 +59,21 @@ class LoginActivity : AppCompatActivity() {
             val email = binding.etEmail.text.toString()
             val password = binding.passwordEditText.text.toString()
 
-            viewModel.login(email, password)
-        }
-
-        viewModel.loginResult.observe(this) { result ->
-            when (result) {
-                is ResultState.Loading -> {
-                    showLoading(true)
-                }
-                is ResultState.Success -> {
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                }
-                is ResultState.Error -> {
-                    showToast(result.error.toString())
+            viewModel.viewModelScope.launch {
+                val result=viewModel.login(email, password).first()
+                if(result.isSuccess){
+                    val loginResponse=result.getOrNull()
+                    loginResponse?.loginResult.let { loginResult ->
+                        loginResult?.token?.let { token->
+                            viewModel.saveSession(token)
+                        }
+                    }
+                    startActivity(Intent(this@LoginActivity,MainActivity::class.java))
+                    finish()
+                }else{
+                    showLoading(false)
+                    val error=result.exceptionOrNull()
+                    Toast.makeText(this@LoginActivity,"login failed:${error?.message}",Toast.LENGTH_SHORT).show()
                 }
             }
         }
