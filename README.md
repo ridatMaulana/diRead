@@ -48,7 +48,7 @@ Capstone Project Bangkit Academy 2023 Batch 2 (Mobile Development)<br>
 
 ### Installation
 #### Install via APK Bundle: 
-1. Download APK: [Download]()
+1. Download APK: [Download](https://drive.google.com/drive/folders/13tet8oFmX2DhWWbJaO_B28AMsB93h3sj)
 - Open the Google Drive link containing the APK.
 - Tap the "Download" button to save the APK file to your device.
 2. Enable Unknown Sources:
